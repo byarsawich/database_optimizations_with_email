@@ -5,11 +5,27 @@ class ReportsController < ApplicationController
     @start_time = Time.now
     @assembly = Assembly.find_by_name(params[:name])
     @hits = @assembly.hits.order(percent_similarity: :desc)
-
-    # @hits.sort! {|a, b| b.percent_similarity <=> a.percent_similarity}
-
     @memory_used = memory_in_mb
   end
+
+  def search
+  end
+
+  def do_search
+    @start_time = Time.now
+
+    @hits = Hit.joins("JOIN genes ON genes.id = hits.subject_id AND hits.subject_type = 'Gene'")
+        .joins("JOIN sequences ON sequences.id = genes.sequence_id")
+        .joins("JOIN assemblies ON assemblies.id = sequences.assembly_id")
+        .where("assemblies.name LIKE ? OR genes.dna LIKE ? OR hits.match_gene_name LIKE ?",
+            "%#{params[:search]}%", "%#{params[:search]}%", "%#{params[:search]}%")
+        .order("hits.percent_similarity DESC")
+
+    @memory_used = memory_in_mb
+    render 'all_data'
+  end
+
+
 
   private def memory_in_mb
     `ps -o rss -p #{$$}`.strip.split.last.to_i / 1024

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'reports/all_data'
 
+  get 'search' => 'reports#search'
+  post 'search' => 'reports#do_search'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
