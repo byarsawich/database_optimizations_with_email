@@ -4,9 +4,9 @@ class ReportsController < ApplicationController
   def all_data
     @start_time = Time.now
     @assembly = Assembly.find_by_name(params[:name])
-    @hits = @assembly.hits.to_a
+    @hits = @assembly.hits.order(percent_similarity: :desc)
 
-    @hits.sort! {|a, b| b.percent_similarity <=> a.percent_similarity}
+    # @hits.sort! {|a, b| b.percent_similarity <=> a.percent_similarity}
 
     @memory_used = memory_in_mb
   end
