@@ -3,6 +3,20 @@
 <p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
 <p>Number of hits: <%= @hits.length %></p>
 
+<div>
+<p>
+  <span>Matching Gene Name</span>
+  <span>Matching DNA</span>
+  <span>Percent Similarity</span>
+</p>
+<% @hits.each do |h| %>
+  <p>
+    <span><%= h.match_gene_name %></span>
+    <span><%= h.match_gene_dna.first(100) %></span>
+    <span><%= h.percent_similarity %></span>
+  </p>
+<% end %>
+</div>
 <table>
   <thead>
     <tr>
@@ -12,13 +26,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @hits.each do |h| %>
+
       <tr>
-        <td><%= h.match_gene_name %></td>
-        <td><%= h.match_gene_dna.first(100) %></td>
-        <td><%= h.percent_similarity %></td>
+        <td></td>
+        <td></td>
+        <td></td>
       </tr>
-    <% end %>
+
   </tbody>
 </table>
 

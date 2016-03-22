@@ -1,3 +1,27 @@
+
+estimate normal part 1: 3 hours not including original db:seed
+estimate normal part 2: 2 hours
+
+
+times:
+first db:seed: 1637.336155 seconds
+Chrome Timeline:
+i. Total Time 25.4 minutes
+ii. Idle Time 1515580.7 ms
+iii. Time Given by Rails Top of Page 1508.161822 s
+iv. Time Given by Rails Bottom of Page 1509.535364 s
+v. The total time by chrome is the time it took for the page to get the information from the database and display it on the page.  The idle time is time shows two things, one is how long the browser waited for a response form the server and then the amount of time it took to for the browser to show the html.  The first number by ruby shows how long it took to get the data from the database and for the browser to interpret the html.  The second number shows how long it took the html to actually show up on the page.
+
+migration time after indices: 0.0066s
+
+Chrome Timeline after indices:
+i. 22.52 s total 6700% increase in efficiency
+ii. 19745.8 ms idle time
+iii. first rails time: 17.457474 s
+iv. second rails time: 18.7787 s
+
+
+
 # Database Optimizations
 
 ## Description
