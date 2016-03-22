@@ -20,6 +20,12 @@ ii. 19745.8 ms idle time
 iii. first rails time: 17.457474 s
 iv. second rails time: 18.7787 s
 
+Chrome Timeline after refactoring:
+i. 15.54s total time
+ii. 1427ms idle time
+iii. 1.79s first rails time
+iv. 3.54s second rails time.
+
 
 
 # Database Optimizations
