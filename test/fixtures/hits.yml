@@ -13,3 +13,10 @@ two:
   percent_similarity: 1.5
   subject_id: 1
   subject_type: Gene
+
+three:
+  match_gene_name: MyString
+  match_gene_dna: MyText
+  percent_similarity: 1.5
+  subject_id: 1
+  subject_type: Gene

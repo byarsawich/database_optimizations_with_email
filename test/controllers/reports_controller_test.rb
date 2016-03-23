@@ -25,10 +25,10 @@ class ReportsControllerTest < ActionController::TestCase
 
   end
 
-  test "create job for search" do
-    assert_enqueued_with(job: MailSearchJob, args: ["test@test.com", "a4"], queue: "mail_search") do
-      post :search_job, {address: "test@test.com", search: "a4"}
-    end
-    assert_redirected_to thank_you_path
-  end
+  # test "create job for search" do
+  #   assert_enqueued_with(job: MailSearchJob, args: ["test@test.com", "a4"], queue: "mail_search") do
+  #     post :search_job, {address: "test@test.com", search: "a4"}
+  #   end
+  #   assert_redirected_to thank_you_path
+  # end
 end
