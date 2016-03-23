@@ -19,5 +19,6 @@ class AddCsvJob < ActiveJob::Base
       end
       Hit.create(subject_id: g.id, subject_type: "Gene", match_gene_name: row["Hit Name"], match_gene_dna: row["Hit Sequence"], percent_similarity: row["Hit Similarity"])
     end
+    File.delete("#{Rails.root}/public/uploads/#{args[0]}")
   end
 end
