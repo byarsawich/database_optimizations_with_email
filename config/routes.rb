@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
   get 'reports/all_data'
+  post 'reports' => 'reports#all_data_job'
+
+  get 'thank_you' => 'reports#report_thank_you'
 
   get 'search' => 'reports#search'
-  post 'search' => 'reports#do_search'
+  post 'search' => 'reports#search_job'
 
   get 'upload' => 'reports#upload'
-  post 'upload' => 'reports#thank_you'
+  post 'upload' => 'reports#upload_thank_you'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

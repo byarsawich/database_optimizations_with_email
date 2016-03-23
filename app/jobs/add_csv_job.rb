@@ -1,7 +1,5 @@
-require 'csv'
-
 class AddCsvJob < ActiveJob::Base
-  queue_as :default
+  queue_as :import_csv
 
   def perform(*args)
     CSV.foreach("#{Rails.root}/public/uploads/#{args[0]}", {headers: true}) do |row|

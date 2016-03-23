@@ -1,5 +1,10 @@
+<p id="notice"><%= notice %></p>
+
 <%= form_tag search_path do%>
 <p>
+  <%= label_tag :address, "Email Address:" %>
+  <%= email_field_tag :address, nil, placeholder: "Email Address" %>
+  <%= label_tag :search, "Search For:" %>
   <%= text_field_tag :search, params[:search] %>
   <%= submit_tag "Search", :name => nil %>
 </p>

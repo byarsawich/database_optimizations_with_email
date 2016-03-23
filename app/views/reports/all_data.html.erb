@@ -1,27 +1,10 @@
-<% if @assembly %>
-  <% hits_for = @assembly.name %>
-<% else %>
-  <% hits_for = params[:search] %>
-<% end %>
-<h1>Hits for <%= hits_for %></h1>
-<p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
-<p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
-<p>Number of hits: <%= @hits.length %></p>
+<p id="notice"><%= notice %></p>
 
-<div>
+<%= form_tag reports_path do%>
+  <%= hidden_field_tag :name, @name %>
 <p>
-  <span>Matching Gene Name</span>
-  <span>Matching DNA</span>
-  <span>Percent Similarity</span>
+  <%= label_tag :address, "Email Address:" %>
+  <%= email_field_tag :address, nil, placeholder: "Email Address" %>
+  <%= submit_tag "Search", :name => nil %>
 </p>
-<% @hits.each do |h| %>
-  <p>
-    <span><%= h.match_gene_name %></span>
-    <span><%= h.match_gene_dna.first(100) %></span>
-    <span><%= h.percent_similarity %></span>
-  </p>
 <% end %>
-</div>
-
-<p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
-<p>Memory used after HTML is generated: <%= memory_in_mb %> MB</p>
