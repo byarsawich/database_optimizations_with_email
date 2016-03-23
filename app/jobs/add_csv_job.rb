@@ -2,7 +2,8 @@ class AddCsvJob < ActiveJob::Base
   queue_as :import_csv
 
   def perform(*args)
-    CSV.foreach("#{Rails.root}/public/uploads/#{args[0]}", {headers: true}) do |row|
+    path = args[0]
+    CSV.foreach(path, {headers: true}) do |row|
       a = Assembly.find_by(name: row["Assembly Name"])
       unless a
         a = Assembly.create(name: row["Assembly Name"], run_on: Date.today)
@@ -17,6 +18,6 @@ class AddCsvJob < ActiveJob::Base
       end
       Hit.create(subject_id: g.id, subject_type: "Gene", match_gene_name: row["Hit Name"], match_gene_dna: row["Hit Sequence"], percent_similarity: row["Hit Similarity"])
     end
-    File.delete("#{Rails.root}/public/uploads/#{args[0]}")
+    File.delete(path)
   end
 end

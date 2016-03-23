@@ -47,11 +47,11 @@ class ReportsController < ApplicationController
 
   def upload_thank_you
     uploaded_io = params[:filename]
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+    path = Rails.root.join('tmp', uploaded_io.original_filename)
+    File.open(path, 'wb') do |file|
       file.write(uploaded_io.read)
     end
-
-    AddCsvJob.set(queue: :import_csv).perform_later(uploaded_io.original_filename)
+    AddCsvJob.set(queue: :import_csv).perform_later(path.to_s)
   end
 
 

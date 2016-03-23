@@ -13,7 +13,7 @@ class UserUploadTest < ActionDispatch::IntegrationTest
     file = Rack::Test::UploadedFile.new(test_csv, "text/csv")
     post_via_redirect(upload_path, filename: file)
 
-    assert_template "thank_you"
+    assert_template "upload_thank_you"
     assert_equal "/upload", path
   end
 
