@@ -1,11 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   dna: MyText
   quality: MyText
   assembly_id: 1
 
 two:
+  id: 2
   dna: MyText
   quality: MyText
   assembly_id: 1

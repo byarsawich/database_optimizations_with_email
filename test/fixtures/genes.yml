@@ -1,13 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   dna: MyText
   starting_position: 1
   direction: false
   sequence_id: 1
 
 two:
+  id: 2
   dna: MyText
   starting_position: 1
   direction: false
   sequence_id: 1
+
+three:
+  id: 3
+  dna: MyText
+  starting_position: 1
+  direction: false
+  sequence_id: 2
+
+four:
+  id: 4
+  dna: MyText
+  starting_position: 1
+  direction: false
+  sequence_id: 2

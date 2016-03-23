@@ -1,0 +1,5 @@
+<%= form_tag upload_path, multipart: true do %>
+  <%= label_tag :filename %>
+  <%= file_field_tag :filename %>
+  <%= submit_tag "Upload File" %>
+<% end %>

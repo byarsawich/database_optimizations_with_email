@@ -5,11 +5,11 @@ one:
   match_gene_dna: MyText
   percent_similarity: 1.5
   subject_id: 1
-  subject_type: MyString
+  subject_type: Gene
 
 two:
   match_gene_name: MyString
   match_gene_dna: MyText
   percent_similarity: 1.5
   subject_id: 1
-  subject_type: MyString
+  subject_type: Gene

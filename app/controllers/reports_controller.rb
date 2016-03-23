@@ -25,6 +25,19 @@ class ReportsController < ApplicationController
     render 'all_data'
   end
 
+  def upload
+
+  end
+
+  def thank_you
+    uploaded_io = params[:filename]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+
+    AddCsvJob.perform_later(uploaded_io.original_filename)
+  end
+
 
 
   private def memory_in_mb

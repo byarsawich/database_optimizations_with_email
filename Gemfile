@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
+
+ruby '2.3.0'
+
+gem 'delayed_job_active_record'
+gem 'daemons'
 gem 'faker'
+gem "activerecord-import", ">= 0.4.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
