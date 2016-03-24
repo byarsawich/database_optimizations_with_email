@@ -17,5 +17,6 @@ class MailSearchJob < ActiveJob::Base
         csv << [h.match_gene_name, h.match_gene_dna, h.percent_similarity]
       end
     end
+    ReportMailer.send_report(args[0], file_path).deliver_now
   end
 end
