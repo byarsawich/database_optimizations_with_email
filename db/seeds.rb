@@ -23,34 +23,42 @@ dna_string = ""
   dna_string << dna_characters.sample
 end
 
+assemblies = []
 assembly_count.times do |i|
-  Assembly.create!(run_on: today - rand(100).days,
+  a = Assembly.new(run_on: today - rand(100).days,
     name: "a#{i+1}")
-  puts "Assembly #{i+1} done" if (i+1) % puts_interval == 0
+  assemblies << a
 end
+Assembly.import assemblies
 
+sequences = []
 sequence_count.times do |i|
-  Sequence.create!(assembly_id: rand(assembly_count) + 1,
+  s = Sequence.new(assembly_id: rand(assembly_count) + 1,
     dna: dna_string[rand(700)..(-1*rand(700))],
     quality: Faker::Lorem.characters(10))
-  puts "Sequence #{i+1} done" if (i+1) % puts_interval == 0
+  sequences << s
 end
+Sequence.import sequences
 
+genes = []
 gene_count.times do |i|
-  Gene.create!(sequence_id: rand(sequence_count) + 1,
+  g = Gene.new(sequence_id: rand(sequence_count) + 1,
     dna: dna_string[rand(700)..(-1*rand(700))],
     starting_position: rand(100),
     direction: rand(2)==1)
-  puts "Gene #{i+1} done" if (i+1) % puts_interval == 0
+  genes << g
 end
+Gene.import genes
 
+hits = []
 hit_count.times do |i|
-  Hit.create!(subject_id: rand(gene_count) + 1,
+  h = Hit.new(subject_id: rand(gene_count) + 1,
       subject_type: "Gene",
       match_gene_name: Faker::Lorem.word,
       match_gene_dna: dna_string[rand(700)..(-1*rand(700))],
       percent_similarity: rand(100))
-  puts "Hit #{i+1} done" if (i+1) % puts_interval == 0
+  hits << h
 end
+Hit.import hits
 
 puts "Completed running in #{Time.now-now} seconds."

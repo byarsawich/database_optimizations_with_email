@@ -7,7 +7,8 @@ gem 'delayed_job_active_record'
 gem 'daemons'
 gem 'faker'
 gem "activerecord-import", ">= 0.4.0"
-
+gem "paperclip", "~> 4.3.6"
+gem "aws-sdk", '~> 1.6'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record

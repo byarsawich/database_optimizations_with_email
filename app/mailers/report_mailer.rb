@@ -9,7 +9,6 @@ class ReportMailer < ApplicationMailer
     @greeting = "Hi"
     @path = file_path
 
-    attachments['report.csv'] = File.read(@path)
     mail to: address, subject: "Your Requested Report"
   end
 end
